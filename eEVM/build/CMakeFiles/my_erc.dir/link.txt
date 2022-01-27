@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/my_erc.dir/samples/my_erc/main.cpp.o CMakeFiles/my_erc.dir/src/simple/simpleaccount.cpp.o CMakeFiles/my_erc.dir/src/simple/simpleglobalstate.cpp.o CMakeFiles/my_erc.dir/src/simple/simplestorage.cpp.o CMakeFiles/my_erc.dir/3rdparty/intx/lib/intx/div.cpp.o -o my_erc  libeevm.a 
