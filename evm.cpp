@@ -117,10 +117,7 @@ DeployRs deploy(
     // nlohmann::json json_storage = env.gs.get(contract_address).st.get_storage();
     nlohmann::json json_storage;
     eevm::to_json(json_storage, gs);
-    
-
     std::string str_storage = json_storage.dump();
-    std::cout << "json_storage.dump " << str_storage;
     
     DeployRs rs = DeployRs {
       b_exitReason: (char)result.er,
@@ -134,10 +131,6 @@ DeployRs deploy(
       length_storage: (int)str_storage.size()
     };
     
-    std::ofstream MyFile("filename.txt");
-    MyFile << str_storage.size();
-    MyFile.close();
-
     memcpy( rs.b_exmsg, (char*)result.exmsg.c_str(), result.exmsg.size() );
     memcpy( rs.b_deployed_address, (char*)&b_contract_address, 20 );
     memcpy( rs.b_deployed_code, result.output.data(), result.output.size() );
@@ -198,7 +191,7 @@ CallRs call(
 
     // storage
     // nlohmann::json json_storage = env.gs.get(contract_address).st.get_storage();
-    nlohmann::json json_storage = {};
+    nlohmann::json json_storage;
     eevm::to_json(json_storage, gs);
     std::string str_storage = json_storage.dump();
 
@@ -211,7 +204,7 @@ CallRs call(
     };
 
     memcpy( rs.b_exmsg, (char*)result.exmsg.c_str(), result.exmsg.size() );
-    memcpy( rs.b_output, result.output.data(), str_storage.size() );
+    memcpy( rs.b_output, result.output.data(), result.output.size() );
     memcpy( rs.b_storage, str_storage.c_str(), str_storage.size() );
 
     return rs;
