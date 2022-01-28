@@ -15,6 +15,35 @@ import (
 	"unsafe"
 )
 
+//export GetSender
+func GetSender() *C.uchar {
+	hexSender := "5079818efa4c69a5fc34e32559a9f94283e31284"
+	bSender, _ := hex.DecodeString(hexSender)
+	cBSender := C.CBytes(bSender)
+	defer C.free(unsafe.Pointer(cBSender))
+	return (*C.uchar)(C.CBytes(bSender))
+}
+
+//export GoGetAccountInfo
+func GoGetAccountInfo(address *C.char) (
+	balance_p *C.char,
+	code_p *C.char,
+	code_length int,
+	storage_p *C.char,
+	storage_length int,
+) {
+	hexSender := "5079818efa4c69a5fc34e32559a9f94283e31284"
+	hexContractBalance := "0000000000000000000000000000000000000000000000000000000000000000"
+
+	bSender, _ := hex.DecodeString(hexSender)
+	bContractBalance, _ := hex.DecodeString(hexContractBalance)
+
+	cBSender := C.CBytes(bSender)
+	cBContractBalance := C.CBytes(bContractBalance)
+
+	return (*C.char)(cBSender), (*C.char)(cBContractBalance), len(bContractBalance), (*C.char)(cBContractBalance), len(bContractBalance)
+}
+
 func main() {
 	hexSender := "5079818efa4c69a5fc34e32559a9f94283e31284"
 	hexLastHash := "4e03657aea45a94fc7d47ba826c8d667c0d1e6e33a64a036ec44f58fa12d6c46"

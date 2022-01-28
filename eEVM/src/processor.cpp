@@ -23,6 +23,8 @@ using namespace std;
 
 namespace eevm
 {
+    using GetAccountInfo = function<GoAccountInfo(char*)>;
+
     struct Consts
     {
         static constexpr auto MAX_CALL_DEPTH = 1024u;
@@ -95,6 +97,8 @@ namespace eevm
         ReturnHandler rh;
         HaltHandler hh;
         ExceptionHandler eh;
+        GetAccountInfo gai;
+
         Context(
                 const Address& caller,
                 AccountState as,
@@ -103,7 +107,8 @@ namespace eevm
                 Program&& prog,
                 ReturnHandler&& rh,
                 HaltHandler&& hh,
-                ExceptionHandler&& eh
+                ExceptionHandler&& eh,
+                GetAccountInfo&& gai
                 ) :
                 as(as),
                 acc(as.acc),
@@ -114,7 +119,8 @@ namespace eevm
                 prog(prog),
                 rh(rh),
                 hh(hh),
-                eh(eh)
+                eh(eh),
+                gai(gai)
         {}
 
         /// increment the pc if it wasn't changed before
@@ -180,7 +186,8 @@ namespace eevm
                 const Address& caller,
                 AccountState callee,
                 vector<uint8_t> input, // Take a copy here, then move it into context
-                const uint256_t& call_value
+                const uint256_t& call_value,
+                GetAccountInfo&& gai
                 )
         {
           // create the first context
@@ -204,7 +211,8 @@ namespace eevm
                   call_value,
                   rh,
                   hh,
-                  eh
+                  eh,
+                  move(gai)
                   );
 
           // run
@@ -246,7 +254,8 @@ namespace eevm
                 const uint256_t& call_value,
                 Context::ReturnHandler&& rh,
                 Context::HaltHandler&& hh,
-                Context::ExceptionHandler&& eh
+                Context::ExceptionHandler&& eh,
+                GetAccountInfo&& gai
         )
         {
           if (get_call_depth() >= Consts::MAX_CALL_DEPTH)
@@ -262,7 +271,8 @@ namespace eevm
                   move(prog),
                   move(rh),
                   move(hh),
-                  move(eh)
+                  move(eh),
+                  move(gai)
             );
           ctxts.emplace_back(move(c));
           ctxt = ctxts.back().get();
@@ -1036,6 +1046,7 @@ namespace eevm
         {
           //<< MYCODE
           // TODO: fetch code and balance, storage
+          // (uint8_t *)GetSender()
             // std::vector<uint8_t> deployed_code((uint8_t*)b_deployed_code, (uint8_t*)b_deployed_code + deployed_code_length);
             // // get balance
             // uint256_t balance = from_big_endian((uint8_t *)b_balance, 32u);
@@ -1287,7 +1298,8 @@ namespace eevm
                   0,
                   rh,
                   hh,
-                  eh
+                  eh,
+                  move(ctxt->gai)
                   );
         }
 
@@ -1346,7 +1358,8 @@ namespace eevm
                       value,
                       rh,
                       hh,
-                      he
+                      he,
+                      move(ctxt->gai)
                       );
                   break;
             case Opcode::CALLCODE:
@@ -1358,7 +1371,9 @@ namespace eevm
                       value,
                       rh,
                       hh,
-                      he);
+                      he,
+                      move(ctxt->gai)
+                      );
                   break;
             case Opcode::DELEGATECALL:
               push_context(
@@ -1369,7 +1384,8 @@ namespace eevm
                       ctxt->call_value,
                       rh,
                       hh,
-                      he
+                      he,
+                      move(ctxt->gai)
                       );
                   break;
             default:
@@ -1393,13 +1409,16 @@ namespace eevm
             AccountState callee,
             const vector<uint8_t>& input,
             const uint256_t& call_value,
-            Trace* tr)
+            GetAccountInfo&& gai,
+            Trace* tr
+            )
     {
       return _Processor(gs, tx, tr).run(
               caller,
               callee,
               input,
-              call_value
+              call_value,
+              move(gai)
       );
     }
 } // namespace eevm

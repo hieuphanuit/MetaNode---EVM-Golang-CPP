@@ -40,6 +40,25 @@ void append_argument(std::vector<uint8_t>& code, const uint256_t& arg)
   eevm::to_big_endian(arg, code.data() + pre_size);
 }
 
+
+struct GoGetAccountInfo_return {
+    char* balance_p;
+    char* code_p;
+    int code_length;
+    char* storage_p;
+    int storage_length;
+};
+
+eevm::GoAccountInfo ConvertGoGetAccountInfoToC(char* address) {
+  auto rs = GoGetAccountInfo(address);
+  return eevm::GoAccountInfo {
+    balance_p: rs.balance_p,
+    code_p: rs.code_p,
+    code_length: rs.code_length,
+    storage_p: rs.storage_p,
+    storage_length: rs.storage_length
+  };
+}
 // Run input as an EVM transaction, check the result and return the output
 eevm::ExecResult run(
   Environment& env,
@@ -57,7 +76,7 @@ eevm::ExecResult run(
   eevm::Processor p(env.gs);
 
   // Run the transaction
-  const auto exec_result = p.run(tx, from, env.gs.get(to), input, 0u, &tr);
+  const auto exec_result = p.run(tx, from, env.gs.get(to), input, 0u, std::move(ConvertGoGetAccountInfoToC), &tr);
   return exec_result;
 }
 

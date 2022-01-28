@@ -1,4 +1,6 @@
 #ifdef __cplusplus
+#include "eEVM/processor.h"
+
 extern "C" {
 #endif
     int test();
@@ -39,6 +41,9 @@ extern "C" {
         char* b_contract_constructor,
         int contract_constructor_length
     );
+
+    extern struct GoGetAccountInfo_return GoGetAccountInfo(char*);
+
 
 #ifdef __cplusplus
 }

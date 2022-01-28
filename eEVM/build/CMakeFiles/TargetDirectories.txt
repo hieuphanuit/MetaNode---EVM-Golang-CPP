@@ -4,7 +4,6 @@
 /mnt/b05eab0b-f34b-49f7-b5fd-7de33dc10b47/Repositories/goCallC/eEVM/build/CMakeFiles/list_install_components.dir
 /mnt/b05eab0b-f34b-49f7-b5fd-7de33dc10b47/Repositories/goCallC/eEVM/build/CMakeFiles/rebuild_cache.dir
 /mnt/b05eab0b-f34b-49f7-b5fd-7de33dc10b47/Repositories/goCallC/eEVM/build/CMakeFiles/edit_cache.dir
-/mnt/b05eab0b-f34b-49f7-b5fd-7de33dc10b47/Repositories/goCallC/eEVM/build/CMakeFiles/my_erc.dir
 /mnt/b05eab0b-f34b-49f7-b5fd-7de33dc10b47/Repositories/goCallC/eEVM/build/CMakeFiles/eevm.dir
 /mnt/b05eab0b-f34b-49f7-b5fd-7de33dc10b47/Repositories/goCallC/eEVM/build/3rdparty/CMakeFiles/install/strip.dir
 /mnt/b05eab0b-f34b-49f7-b5fd-7de33dc10b47/Repositories/goCallC/eEVM/build/3rdparty/CMakeFiles/install/local.dir

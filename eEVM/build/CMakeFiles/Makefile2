@@ -72,7 +72,6 @@ CMAKE_BINARY_DIR = /mnt/b05eab0b-f34b-49f7-b5fd-7de33dc10b47/Repositories/goCall
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/my_erc.dir/all
 all: CMakeFiles/eevm.dir/all
 all: 3rdparty/all
 
@@ -84,7 +83,6 @@ preinstall: 3rdparty/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/my_erc.dir/clean
 clean: CMakeFiles/eevm.dir/clean
 clean: 3rdparty/clean
 
@@ -107,33 +105,6 @@ clean: 3rdparty/clean
 3rdparty/clean:
 
 .PHONY : 3rdparty/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/my_erc.dir
-
-# All Build rule for target.
-CMakeFiles/my_erc.dir/all: CMakeFiles/eevm.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/b05eab0b-f34b-49f7-b5fd-7de33dc10b47/Repositories/goCallC/eEVM/build/CMakeFiles --progress-num=15,16,17,18,19,20 "Built target my_erc"
-.PHONY : CMakeFiles/my_erc.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/my_erc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/b05eab0b-f34b-49f7-b5fd-7de33dc10b47/Repositories/goCallC/eEVM/build/CMakeFiles 20
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/my_erc.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/b05eab0b-f34b-49f7-b5fd-7de33dc10b47/Repositories/goCallC/eEVM/build/CMakeFiles 0
-.PHONY : CMakeFiles/my_erc.dir/rule
-
-# Convenience name for target.
-my_erc: CMakeFiles/my_erc.dir/rule
-
-.PHONY : my_erc
-
-# clean rule for target.
-CMakeFiles/my_erc.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/clean
-.PHONY : CMakeFiles/my_erc.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/eevm.dir

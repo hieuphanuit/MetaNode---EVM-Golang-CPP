@@ -176,19 +176,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named my_erc
-
-# Build rule for target.
-my_erc: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_erc
-.PHONY : my_erc
-
-# fast build rule for target.
-my_erc/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/build
-.PHONY : my_erc/fast
-
-#=============================================================================
 # Target rules for targets named eevm
 
 # Build rule for target.
@@ -207,7 +194,6 @@ eevm/fast:
 
 # target to build an object file
 3rdparty/intx/lib/intx/div.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/3rdparty/intx/lib/intx/div.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/3rdparty/intx/lib/intx/div.cpp.o
 .PHONY : 3rdparty/intx/lib/intx/div.cpp.o
 
@@ -217,7 +203,6 @@ eevm/fast:
 
 # target to preprocess a source file
 3rdparty/intx/lib/intx/div.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/3rdparty/intx/lib/intx/div.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/3rdparty/intx/lib/intx/div.cpp.i
 .PHONY : 3rdparty/intx/lib/intx/div.cpp.i
 
@@ -227,7 +212,6 @@ eevm/fast:
 
 # target to generate assembly for a file
 3rdparty/intx/lib/intx/div.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/3rdparty/intx/lib/intx/div.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/3rdparty/intx/lib/intx/div.cpp.s
 .PHONY : 3rdparty/intx/lib/intx/div.cpp.s
 
@@ -339,33 +323,6 @@ eevm/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/3rdparty/keccak/SimpleFIPS202.c.s
 .PHONY : 3rdparty/keccak/SimpleFIPS202.c.s
 
-samples/my_erc/main.o: samples/my_erc/main.cpp.o
-
-.PHONY : samples/my_erc/main.o
-
-# target to build an object file
-samples/my_erc/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/samples/my_erc/main.cpp.o
-.PHONY : samples/my_erc/main.cpp.o
-
-samples/my_erc/main.i: samples/my_erc/main.cpp.i
-
-.PHONY : samples/my_erc/main.i
-
-# target to preprocess a source file
-samples/my_erc/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/samples/my_erc/main.cpp.i
-.PHONY : samples/my_erc/main.cpp.i
-
-samples/my_erc/main.s: samples/my_erc/main.cpp.s
-
-.PHONY : samples/my_erc/main.s
-
-# target to generate assembly for a file
-samples/my_erc/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/samples/my_erc/main.cpp.s
-.PHONY : samples/my_erc/main.cpp.s
-
 src/disassembler.o: src/disassembler.cpp.o
 
 .PHONY : src/disassembler.o
@@ -426,7 +383,6 @@ src/simple/simpleaccount.o: src/simple/simpleaccount.cpp.o
 
 # target to build an object file
 src/simple/simpleaccount.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/src/simple/simpleaccount.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/src/simple/simpleaccount.cpp.o
 .PHONY : src/simple/simpleaccount.cpp.o
 
@@ -436,7 +392,6 @@ src/simple/simpleaccount.i: src/simple/simpleaccount.cpp.i
 
 # target to preprocess a source file
 src/simple/simpleaccount.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/src/simple/simpleaccount.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/src/simple/simpleaccount.cpp.i
 .PHONY : src/simple/simpleaccount.cpp.i
 
@@ -446,7 +401,6 @@ src/simple/simpleaccount.s: src/simple/simpleaccount.cpp.s
 
 # target to generate assembly for a file
 src/simple/simpleaccount.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/src/simple/simpleaccount.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/src/simple/simpleaccount.cpp.s
 .PHONY : src/simple/simpleaccount.cpp.s
 
@@ -456,7 +410,6 @@ src/simple/simpleglobalstate.o: src/simple/simpleglobalstate.cpp.o
 
 # target to build an object file
 src/simple/simpleglobalstate.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/src/simple/simpleglobalstate.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/src/simple/simpleglobalstate.cpp.o
 .PHONY : src/simple/simpleglobalstate.cpp.o
 
@@ -466,7 +419,6 @@ src/simple/simpleglobalstate.i: src/simple/simpleglobalstate.cpp.i
 
 # target to preprocess a source file
 src/simple/simpleglobalstate.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/src/simple/simpleglobalstate.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/src/simple/simpleglobalstate.cpp.i
 .PHONY : src/simple/simpleglobalstate.cpp.i
 
@@ -476,7 +428,6 @@ src/simple/simpleglobalstate.s: src/simple/simpleglobalstate.cpp.s
 
 # target to generate assembly for a file
 src/simple/simpleglobalstate.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/src/simple/simpleglobalstate.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/src/simple/simpleglobalstate.cpp.s
 .PHONY : src/simple/simpleglobalstate.cpp.s
 
@@ -486,7 +437,6 @@ src/simple/simplestorage.o: src/simple/simplestorage.cpp.o
 
 # target to build an object file
 src/simple/simplestorage.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/src/simple/simplestorage.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/src/simple/simplestorage.cpp.o
 .PHONY : src/simple/simplestorage.cpp.o
 
@@ -496,7 +446,6 @@ src/simple/simplestorage.i: src/simple/simplestorage.cpp.i
 
 # target to preprocess a source file
 src/simple/simplestorage.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/src/simple/simplestorage.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/src/simple/simplestorage.cpp.i
 .PHONY : src/simple/simplestorage.cpp.i
 
@@ -506,7 +455,6 @@ src/simple/simplestorage.s: src/simple/simplestorage.cpp.s
 
 # target to generate assembly for a file
 src/simple/simplestorage.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_erc.dir/build.make CMakeFiles/my_erc.dir/src/simple/simplestorage.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/eevm.dir/build.make CMakeFiles/eevm.dir/src/simple/simplestorage.cpp.s
 .PHONY : src/simple/simplestorage.cpp.s
 
@@ -604,7 +552,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... eevm"
-	@echo "... my_erc"
 	@echo "... 3rdparty/intx/lib/intx/div.o"
 	@echo "... 3rdparty/intx/lib/intx/div.i"
 	@echo "... 3rdparty/intx/lib/intx/div.s"
@@ -620,9 +567,6 @@ help:
 	@echo "... 3rdparty/keccak/SimpleFIPS202.o"
 	@echo "... 3rdparty/keccak/SimpleFIPS202.i"
 	@echo "... 3rdparty/keccak/SimpleFIPS202.s"
-	@echo "... samples/my_erc/main.o"
-	@echo "... samples/my_erc/main.i"
-	@echo "... samples/my_erc/main.s"
 	@echo "... src/disassembler.o"
 	@echo "... src/disassembler.i"
 	@echo "... src/disassembler.s"

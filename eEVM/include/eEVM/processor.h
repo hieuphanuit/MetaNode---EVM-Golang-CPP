@@ -28,6 +28,13 @@ namespace eevm
     std::vector<uint8_t> output = {};
   };
 
+  struct GoAccountInfo{
+    char* balance_p;
+    char* code_p;
+    int code_length;
+    char* storage_p;
+    int storage_length;
+  };
   /**
    * Ethereum bytecode processor.
    */
@@ -59,6 +66,7 @@ namespace eevm
       AccountState callee,
       const std::vector<uint8_t>& input,
       const uint256_t& call_value,
+      std::function<GoAccountInfo(char*)>&& gai,
       Trace* tr = nullptr
     );
   };
