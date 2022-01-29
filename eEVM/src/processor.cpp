@@ -1045,15 +1045,16 @@ namespace eevm
         void extcodesize()
         {
           //<< MYCODE
-          // TODO: fetch code and balance, storage
-          // (uint8_t *)GetSender()
-            // std::vector<uint8_t> deployed_code((uint8_t*)b_deployed_code, (uint8_t*)b_deployed_code + deployed_code_length);
-            // // get balance
-            // uint256_t balance = from_big_endian((uint8_t *)b_balance, 32u);
-            // nlohmann::json j_storage = nlohmann::json::parse((std::string)charStorage);
-
-            // gs.create_with_storage(address, balance, deployed_code, j_storage);
-            // ctxt->s.push(gs.get(address).acc.get_code().size());
+          auto address = pop_addr(ctxt->s);
+          uint8_t b_address[20u] = {};
+          std::memcpy(b_address, &address, 20u);
+          auto accountInfo = ctxt->gai((char*) b_address);
+          uint256_t balance = from_big_endian((uint8_t *)accountInfo.balance_p, 32u);
+          std::vector<uint8_t> deployed_code((uint8_t*)accountInfo.code_p, (uint8_t*)accountInfo.code_p + accountInfo.code_length);
+          std::string charStorage((char*)accountInfo.storage_p, accountInfo.storage_length);
+          nlohmann::json j_storage = nlohmann::json::parse(charStorage);
+          gs.create_with_storage(address, balance, deployed_code, j_storage);
+          ctxt->s.push(gs.get(address).acc.get_code().size());
           // >>
 
           // OLD CODE
